@@ -439,8 +439,8 @@
 <header class="hero" id="top">
   <div class="container">
     <div class="hero-label">Onboarding · Time de Suporte</div>
-    <h1>Autonomia pra cuidar da Central CS, sem depender do Rodrigo pra subir cada melhoria.</h1>
-    <p>Você passa a editar, testar e publicar mudanças na Central CS por conta própria. O resto do dashboard permanece protegido — quem garante isso é a configuração técnica, não a boa vontade.</p>
+    <h1>Autonomia pra desenvolver a Central CS no seu ritmo, sem travar à espera do Rodrigo.</h1>
+    <p>Você edita, testa local e refina à vontade. Quando estiver satisfeita com a mudança, avisa o Rodrigo: ele revisa, aprova e o deploy em produção sobe automático. Toda a iteração é sua, a liberação final é dele.</p>
   </div>
 </header>
 
@@ -464,11 +464,11 @@
       <div class="stack-card">
         <div class="label">Deploy</div>
         <div class="value">Vercel + GitHub Actions</div>
-        <div class="detail">Merge em main → deploy automático em produção</div>
+        <div class="detail">Rodrigo aprova o PR, deploy automático em produção</div>
       </div>
       <div class="stack-card">
-        <div class="label">Integrações</div>
-        <div class="value">Hotmart, Asaas, TMB, Meta Ads</div>
+        <div class="label">Integrações CS</div>
+        <div class="value">Hotmart, Asaas, TMB</div>
         <div class="detail">Sync a cada 6h ou on-demand via Actions</div>
       </div>
     </div>
@@ -479,7 +479,7 @@
   <div class="container">
     <div class="section-label">Linha divisória</div>
     <h2>O que está no seu colo e o que fica no do Rodrigo.</h2>
-    <p>O GitHub bloqueia automaticamente qualquer PR que saia do escopo CS. Você pode abrir — mas não consegue mergear sem a aprovação do Rodrigo. Isso existe pra você trabalhar rápido sem medo de quebrar algo do outro lado.</p>
+    <p>Você pode editar, testar local e abrir PR sem aprovação. Quem mergeia para produção é o Rodrigo: isso garante que você trabalha rápido no seu escopo sem medo de quebrar o resto do dashboard.</p>
 
     <div class="scope-grid">
       <div class="scope-col in">
@@ -544,8 +544,8 @@
       <div class="flow-step"><h4>Abre PR</h4><p>Descreve o que mudou, por quê, como testar.</p></div>
       <div class="flow-step"><h4>CI roda (~3 min)</h4><p>Lint, build, validação de escopo, preview Vercel.</p></div>
       <div class="flow-step"><h4>Testa no preview</h4><p>URL temporária gerada pela Vercel no PR.</p></div>
-      <div class="flow-step"><h4>Merge</h4><p>3 checks verdes + preview ok = você mergeia.</p></div>
-      <div class="flow-step"><h4>Deploy automático</h4><p>Action sobe para dashboard.rodrigorosar.com.br.</p></div>
+      <div class="flow-step"><h4>Avisa o Rodrigo</h4><p>Quando estiver satisfeita, manda o link do PR pra ele revisar.</p></div>
+      <div class="flow-step"><h4>Rodrigo aprova + merge</h4><p>Ele confere o preview, aprova e mergeia. Deploy em produção dispara sozinho.</p></div>
     </div>
 
     <div class="cta-row">
@@ -558,24 +558,25 @@
 <section id="sync">
   <div class="container">
     <div class="section-label">Dados em tempo real</div>
-    <h2>Sincronizando Hotmart, Asaas e Meta Ads.</h2>
-    <p>O Supabase recebe dados das APIs externas a cada 6 horas automaticamente. Mas quando você precisa testar com uma venda recém-feita, pode forçar o sync manualmente.</p>
+    <h2>Sincronizando Hotmart, Asaas e TMB.</h2>
+    <p>O Supabase recebe dados das APIs externas a cada 6 horas automaticamente. Quando você precisa testar com uma venda recém-feita ou uma cobrança atualizada, pode forçar o sync manualmente.</p>
 
     <h3>Sync automático</h3>
-    <p>A cada 6h, o GitHub Actions dispara o sync de todas as APIs (Hotmart, Asaas, TMB, Meta). Você vê o histórico em <a href="https://github.com/METRIK-GROUP/launch-dashboard/actions" target="_blank" rel="noopener">github.com/METRIK-GROUP/launch-dashboard/actions</a>.</p>
+    <p>A cada 6h, o GitHub Actions dispara o sync das APIs que alimentam a Central CS. Você vê o histórico em <a href="https://github.com/METRIK-GROUP/launch-dashboard/actions" target="_blank" rel="noopener">github.com/METRIK-GROUP/launch-dashboard/actions</a>.</p>
 
-    <h3>Sync manual — quando usar</h3>
+    <h3>Sync manual, quando usar</h3>
     <p>Acabou de entrar uma venda nova no Hotmart e você quer testar o fluxo de liberação de acesso imediatamente. Ou um aluno pagou uma parcela em atraso e você precisa ver o status atualizado no dashboard agora, sem esperar a próxima janela de 6h.</p>
 
     <h3>Como disparar manualmente</h3>
-    <pre><code>1. Actions → Sync APIs (ou Sync Hotmart para só Hotmart)
+    <pre><code>1. Actions → Sync Hotmart (ou Asaas, ou TMB)
 2. Run workflow → branch main → Run workflow
 3. Espera ~1 min, confere se ficou verde
-4. Abre o dashboard — dados atualizados</code></pre>
+4. Abre o dashboard, dados atualizados</code></pre>
 
     <div class="cta-row">
-      <a href="https://github.com/METRIK-GROUP/launch-dashboard/actions/workflows/sync-apis.yml" class="btn" target="_blank" rel="noopener">Disparar Sync APIs</a>
-      <a href="https://github.com/METRIK-GROUP/launch-dashboard/actions/workflows/sync-hotmart.yml" class="btn outline" target="_blank" rel="noopener">Disparar Sync Hotmart</a>
+      <a href="https://github.com/METRIK-GROUP/launch-dashboard/actions/workflows/sync-hotmart.yml" class="btn" target="_blank" rel="noopener">Sync Hotmart</a>
+      <a href="https://github.com/METRIK-GROUP/launch-dashboard/actions/workflows/sync-asaas.yml" class="btn outline" target="_blank" rel="noopener">Sync Asaas</a>
+      <a href="https://github.com/METRIK-GROUP/launch-dashboard/actions/workflows/sync-tmb.yml" class="btn outline" target="_blank" rel="noopener">Sync TMB</a>
     </div>
   </div>
 </section>
