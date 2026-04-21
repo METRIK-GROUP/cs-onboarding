@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Central CS — Onboarding | Launch Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-black: #1E1E1E;
+    --color-graphite: #3D3D3A;
+    --color-gray-700: #5F5E5A;
+    --color-gray-500: #888780;
+    --color-gray-300: #B4B2A9;
+    --color-gray-100: #D3D1C7;
+    --color-offwhite: #F5F4F0;
+    --color-white: #FFFFFF;
+
+    --font-primary: 'Inter', Arial, sans-serif;
+    --font-editorial: 'DM Serif Display', Georgia, serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-6: 3rem;
+    --space-8: 4rem;
+    --space-10: 5rem;
+
+    --container-max: 1280px;
+    --content-max: 680px;
+
+    --transition-fast: 150ms ease;
+    --transition-base: 200ms ease;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-primary);
+    color: var(--color-black);
+    background: var(--color-white);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--color-black);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-gray-300);
+    transition: border-color var(--transition-base);
+  }
+  a:hover { border-color: var(--color-black); }
+
+  code, pre {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+  }
+  code {
+    background: var(--color-offwhite);
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid var(--color-gray-100);
+  }
+  pre {
+    background: var(--color-black);
+    color: var(--color-offwhite);
+    padding: var(--space-3);
+    overflow-x: auto;
+    line-height: 1.5;
+    font-size: 13px;
+  }
+  pre code {
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+  }
+
+  .container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-gray-100);
+    z-index: 10;
+  }
+  nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
+  }
+  .brand {
+    font-family: var(--font-editorial);
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: var(--color-black);
+    border: none;
+  }
+  .brand small {
+    font-family: var(--font-primary);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gray-500);
+    margin-left: var(--space-1);
+    font-weight: 400;
+  }
+  .nav-links {
+    display: flex;
+    gap: var(--space-4);
+  }
+  .nav-links a {
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--color-graphite);
+    border: none;
+  }
+  .nav-links a:hover { color: var(--color-black); }
+
+  /* HERO */
+  .hero {
+    padding: var(--space-10) 0 var(--space-8);
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-3);
+  }
+  .hero h1 {
+    font-family: var(--font-editorial);
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 400;
+    line-height: 1.1;
+    max-width: var(--content-max);
+    margin-bottom: var(--space-4);
+    letter-spacing: -0.01em;
+  }
+  .hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-graphite);
+    max-width: 560px;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: var(--space-10) 0;
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+  section.dark {
+    background: var(--color-black);
+    color: var(--color-offwhite);
+    border-bottom-color: var(--color-graphite);
+  }
+  section.offwhite { background: var(--color-offwhite); }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-2);
+  }
+  section.dark .section-label { color: var(--color-gray-300); }
+
+  h2 {
+    font-family: var(--font-editorial);
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: var(--space-4);
+    max-width: var(--content-max);
+    letter-spacing: -0.005em;
+  }
+  h3 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: var(--space-2);
+    margin-top: var(--space-4);
+  }
+  h3:first-child { margin-top: 0; }
+
+  p {
+    max-width: var(--content-max);
+    margin-bottom: var(--space-2);
+  }
+  p + p { margin-top: var(--space-2); }
+
+  /* STACK GRID */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+  .stack-card {
+    padding: var(--space-3);
+    border: 1px solid var(--color-gray-100);
+    background: var(--color-white);
+  }
+  .stack-card .label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-1);
+  }
+  .stack-card .value {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-black);
+  }
+  .stack-card .detail {
+    font-size: 13px;
+    color: var(--color-gray-700);
+    margin-top: var(--space-1);
+    line-height: 1.5;
+  }
+
+  /* TABS GRID */
+  .tabs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+  .tab-card {
+    padding: var(--space-3);
+    border: 1px solid var(--color-gray-100);
+    background: var(--color-white);
+    transition: border-color var(--transition-base), transform var(--transition-base);
+  }
+  .tab-card:hover {
+    border-color: var(--color-graphite);
+    transform: translateY(-2px);
+  }
+  .tab-card .num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-1);
+  }
+  .tab-card .name {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--color-black);
+    margin-bottom: var(--space-1);
+  }
+  .tab-card .desc {
+    font-size: 14px;
+    color: var(--color-gray-700);
+    line-height: 1.55;
+  }
+
+  /* FLOW */
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+    counter-reset: step;
+  }
+  .flow-step {
+    padding: var(--space-3);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    position: relative;
+  }
+  .flow-step::before {
+    counter-increment: step;
+    content: counter(step, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--color-gray-500);
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+  .flow-step h4 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: var(--space-1);
+  }
+  .flow-step p {
+    font-size: 14px;
+    color: var(--color-gray-700);
+    margin: 0;
+    line-height: 1.55;
+  }
+  section.dark .flow-step {
+    background: var(--color-graphite);
+    border-color: var(--color-gray-700);
+  }
+  section.dark .flow-step::before { color: var(--color-gray-300); }
+  section.dark .flow-step p { color: var(--color-gray-300); }
+
+  /* SCOPE */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+  .scope-col h4 {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-2);
+    padding-bottom: var(--space-1);
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+  .scope-col.in h4 { color: var(--color-black); }
+  .scope-col ul {
+    list-style: none;
+    padding: 0;
+  }
+  .scope-col li {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: var(--space-1) 0;
+    color: var(--color-graphite);
+    border-bottom: 1px dashed var(--color-gray-100);
+  }
+  .scope-col li:last-child { border-bottom: none; }
+  .scope-col.out li { color: var(--color-gray-500); text-decoration: line-through; }
+
+  @media (max-width: 640px) {
+    .scope-grid { grid-template-columns: 1fr; }
+  }
+
+  /* CTA */
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+  }
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--color-black);
+    background: var(--color-black);
+    color: var(--color-white);
+    transition: background var(--transition-base), color var(--transition-base);
+  }
+  .btn:hover { background: var(--color-graphite); border-color: var(--color-graphite); }
+  .btn.outline {
+    background: transparent;
+    color: var(--color-black);
+  }
+  .btn.outline:hover { background: var(--color-black); color: var(--color-white); }
+  section.dark .btn {
+    background: var(--color-offwhite);
+    color: var(--color-black);
+    border-color: var(--color-offwhite);
+  }
+  section.dark .btn:hover { background: var(--color-white); border-color: var(--color-white); }
+  section.dark .btn.outline {
+    background: transparent;
+    color: var(--color-offwhite);
+    border-color: var(--color-gray-300);
+  }
+  section.dark .btn.outline:hover {
+    background: var(--color-offwhite);
+    color: var(--color-black);
+    border-color: var(--color-offwhite);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: var(--space-4) 0;
+    font-size: 12px;
+    color: var(--color-gray-500);
+    letter-spacing: 0.02em;
+  }
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  footer a { color: var(--color-graphite); border: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+    h2 { font-size: 28px; }
+    section { padding: var(--space-8) 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#top" class="brand">METRIK <small>Central CS</small></a>
+    <div class="nav-links">
+      <a href="#stack">Stack</a>
+      <a href="#escopo">Escopo</a>
+      <a href="#abas">Abas</a>
+      <a href="#fluxo">Fluxo</a>
+      <a href="#sync">Sync</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-label">Onboarding · Time de Suporte</div>
+    <h1>Autonomia pra cuidar da Central CS, sem depender do Rodrigo pra subir cada melhoria.</h1>
+    <p>Você passa a editar, testar e publicar mudanças na Central CS por conta própria. O resto do dashboard permanece protegido — quem garante isso é a configuração técnica, não a boa vontade.</p>
+  </div>
+</header>
+
+<section id="stack">
+  <div class="container">
+    <div class="section-label">O que é o projeto</div>
+    <h2>Launch Dashboard em uma frase</h2>
+    <p>É o painel interno da Metrik Instituto que une vendas, alunos, lançamentos, tráfego e a Central CS em um só lugar. Roda em produção em <a href="https://dashboard.rodrigorosar.com.br" target="_blank" rel="noopener">dashboard.rodrigorosar.com.br</a>.</p>
+
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="label">Frontend</div>
+        <div class="value">Next.js 16</div>
+        <div class="detail">App Router, React 19, TypeScript, Tailwind, shadcn/ui</div>
+      </div>
+      <div class="stack-card">
+        <div class="label">Backend</div>
+        <div class="value">Supabase</div>
+        <div class="detail">PostgreSQL, Auth, Edge Functions, Storage</div>
+      </div>
+      <div class="stack-card">
+        <div class="label">Deploy</div>
+        <div class="value">Vercel + GitHub Actions</div>
+        <div class="detail">Merge em main → deploy automático em produção</div>
+      </div>
+      <div class="stack-card">
+        <div class="label">Integrações</div>
+        <div class="value">Hotmart, Asaas, TMB, Meta Ads</div>
+        <div class="detail">Sync a cada 6h ou on-demand via Actions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="escopo" class="offwhite">
+  <div class="container">
+    <div class="section-label">Linha divisória</div>
+    <h2>O que está no seu colo e o que fica no do Rodrigo.</h2>
+    <p>O GitHub bloqueia automaticamente qualquer PR que saia do escopo CS. Você pode abrir — mas não consegue mergear sem a aprovação do Rodrigo. Isso existe pra você trabalhar rápido sem medo de quebrar algo do outro lado.</p>
+
+    <div class="scope-grid">
+      <div class="scope-col in">
+        <h4>Você mexe livremente</h4>
+        <ul>
+          <li>src/app/central-cs/</li>
+          <li>src/components/central-cs/</li>
+          <li>docs/central-cs/</li>
+        </ul>
+      </div>
+      <div class="scope-col out">
+        <h4>Fora do seu escopo</h4>
+        <ul>
+          <li>src/lib/queries.ts</li>
+          <li>src/app/api/webhooks/</li>
+          <li>supabase/migrations/</li>
+          <li>.github/</li>
+          <li>package.json</li>
+          <li>vercel.json</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="abas">
+  <div class="container">
+    <div class="section-label">A Central CS hoje</div>
+    <h2>13 abas cobrindo o ciclo inteiro do aluno.</h2>
+    <p>Cada aba é uma visão específica do trabalho diário do suporte. Todas consomem dados reais do Supabase, nada é mock. Quando você mudar uma aba, o impacto fica contido naquela aba.</p>
+
+    <div class="tabs-grid">
+      <div class="tab-card"><div class="num">01</div><div class="name">Painel</div><div class="desc">Visão geral da Central CS: alertas, métricas do dia, fila de trabalho</div></div>
+      <div class="tab-card"><div class="num">02</div><div class="name">Cobrança</div><div class="desc">Gestão de inadimplência, pipeline de recuperação, ações em lote</div></div>
+      <div class="tab-card"><div class="num">03</div><div class="name">Acessos</div><div class="desc">Bloqueio e liberação de acesso aos cursos por programa/assinatura</div></div>
+      <div class="tab-card"><div class="num">04</div><div class="name">Onboarding</div><div class="desc">Boas-vindas, checklist do aluno novo, ativação</div></div>
+      <div class="tab-card"><div class="num">05</div><div class="name">Suporte</div><div class="desc">Fila de tickets, histórico, atribuição de atendimento</div></div>
+      <div class="tab-card"><div class="num">06</div><div class="name">Alunos</div><div class="desc">Busca e perfil 360° — compras, acessos, interações</div></div>
+      <div class="tab-card"><div class="num">07</div><div class="name">Base de Conhecimento</div><div class="desc">Artigos internos, respostas padrão, conteúdo do QA Bot</div></div>
+      <div class="tab-card"><div class="num">08</div><div class="name">Vigilante</div><div class="desc">Monitoramento ativo de mensagens WhatsApp, alertas</div></div>
+      <div class="tab-card"><div class="num">09</div><div class="name">Renovação</div><div class="desc">Pipeline de renovações, follow-up de assinaturas</div></div>
+      <div class="tab-card"><div class="num">10</div><div class="name">Certificados</div><div class="desc">Emissão e gestão de certificados de conclusão</div></div>
+      <div class="tab-card"><div class="num">11</div><div class="name">Verificação</div><div class="desc">Validação de compras, resolução de disputas</div></div>
+      <div class="tab-card"><div class="num">12</div><div class="name">Monitoramento Turma</div><div class="desc">Acompanhamento de aulas ao vivo, presença, engajamento</div></div>
+      <div class="tab-card"><div class="num">13</div><div class="name">QA Bot</div><div class="desc">Bot de atendimento automático no Hotmart Club</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="fluxo" class="dark">
+  <div class="container">
+    <div class="section-label">Como sua mudança vai para o ar</div>
+    <h2>Do código ao domínio de produção em 10 passos.</h2>
+    <p>Cada passo tem proteção automática. Se algo der errado em qualquer ponto, o sistema trava antes de chegar em produção — você corrige, pusha de novo, segue.</p>
+
+    <div class="flow">
+      <div class="flow-step"><h4>Pull da main</h4><p>Sempre começa do código mais atualizado.</p></div>
+      <div class="flow-step"><h4>Branch cs/&lt;feature&gt;</h4><p>Nome descritivo em kebab-case.</p></div>
+      <div class="flow-step"><h4>Código + pnpm dev</h4><p>Faz a mudança, testa em localhost.</p></div>
+      <div class="flow-step"><h4>Lint + typecheck</h4><p>pnpm lint e tsc --noEmit passam.</p></div>
+      <div class="flow-step"><h4>Commit + push</h4><p>Mensagem no padrão feat/fix/refactor(cs):</p></div>
+      <div class="flow-step"><h4>Abre PR</h4><p>Descreve o que mudou, por quê, como testar.</p></div>
+      <div class="flow-step"><h4>CI roda (~3 min)</h4><p>Lint, build, validação de escopo, preview Vercel.</p></div>
+      <div class="flow-step"><h4>Testa no preview</h4><p>URL temporária gerada pela Vercel no PR.</p></div>
+      <div class="flow-step"><h4>Merge</h4><p>3 checks verdes + preview ok = você mergeia.</p></div>
+      <div class="flow-step"><h4>Deploy automático</h4><p>Action sobe para dashboard.rodrigorosar.com.br.</p></div>
+    </div>
+
+    <div class="cta-row">
+      <a href="https://github.com/METRIK-GROUP/launch-dashboard/blob/main/docs/central-cs/GUIA-DEPLOY-CS.md" class="btn" target="_blank" rel="noopener">Ler o guia completo</a>
+      <a href="https://github.com/METRIK-GROUP/launch-dashboard" class="btn outline" target="_blank" rel="noopener">Abrir o repo no GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="sync">
+  <div class="container">
+    <div class="section-label">Dados em tempo real</div>
+    <h2>Sincronizando Hotmart, Asaas e Meta Ads.</h2>
+    <p>O Supabase recebe dados das APIs externas a cada 6 horas automaticamente. Mas quando você precisa testar com uma venda recém-feita, pode forçar o sync manualmente.</p>
+
+    <h3>Sync automático</h3>
+    <p>A cada 6h, o GitHub Actions dispara o sync de todas as APIs (Hotmart, Asaas, TMB, Meta). Você vê o histórico em <a href="https://github.com/METRIK-GROUP/launch-dashboard/actions" target="_blank" rel="noopener">github.com/METRIK-GROUP/launch-dashboard/actions</a>.</p>
+
+    <h3>Sync manual — quando usar</h3>
+    <p>Acabou de entrar uma venda nova no Hotmart e você quer testar o fluxo de liberação de acesso imediatamente. Ou um aluno pagou uma parcela em atraso e você precisa ver o status atualizado no dashboard agora, sem esperar a próxima janela de 6h.</p>
+
+    <h3>Como disparar manualmente</h3>
+    <pre><code>1. Actions → Sync APIs (ou Sync Hotmart para só Hotmart)
+2. Run workflow → branch main → Run workflow
+3. Espera ~1 min, confere se ficou verde
+4. Abre o dashboard — dados atualizados</code></pre>
+
+    <div class="cta-row">
+      <a href="https://github.com/METRIK-GROUP/launch-dashboard/actions/workflows/sync-apis.yml" class="btn" target="_blank" rel="noopener">Disparar Sync APIs</a>
+      <a href="https://github.com/METRIK-GROUP/launch-dashboard/actions/workflows/sync-hotmart.yml" class="btn outline" target="_blank" rel="noopener">Disparar Sync Hotmart</a>
+    </div>
+  </div>
+</section>
+
+<section class="offwhite">
+  <div class="container">
+    <div class="section-label">Quando travar</div>
+    <h2>Tudo que precisa de SOS.</h2>
+    <p>Se o CI falhar com erro que você não entende, se o preview mostrar comportamento diferente do local, ou se a produção ficar estranha após seu deploy: não insista sozinha. É mais barato perguntar do que desfazer.</p>
+    <p>O rollback de emergência é um comando: <code>npx vercel rollback</code>. Volta para o deploy anterior em segundos.</p>
+
+    <div class="cta-row">
+      <a href="https://github.com/METRIK-GROUP/launch-dashboard/blob/main/docs/central-cs/GUIA-DEPLOY-CS.md#algo-deu-errado" class="btn outline" target="_blank" rel="noopener">Troubleshooting</a>
+      <a href="https://github.com/METRIK-GROUP/launch-dashboard/blob/main/docs/central-cs/README.md" class="btn outline" target="_blank" rel="noopener">README da Central CS</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>METRIK Instituto · Central CS · Launch Dashboard</div>
+    <div><a href="https://dashboard.rodrigorosar.com.br" target="_blank" rel="noopener">dashboard.rodrigorosar.com.br</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
